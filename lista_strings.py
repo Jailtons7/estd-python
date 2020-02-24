@@ -1,26 +1,24 @@
 # Neste módulo estão as funções sobre a lista 2 - strings.
 # O desafio é usar o mínimo possível de funções built-in do Python
 
-def comprimento(iteravel):
+def para_maiuscula(frase):
     '''
-    :param iteravel: pode ser string, lista, tupla...
-    :return: tamanho da string (minha versão da função len())
+    :param frase: String
+    :return: String, a frase em maiúsculas
     '''
-    contador = 0
-    for i in iteravel:
-        contador += 1
-    return contador
+    minusculas = ['a','à','á','ã','â','b','c','ç','d','e','é','ê','f','g','h','i','í','j','k','l','m',
+                  'n','o','ó','ô','õ','p','q','r','s','t','u','ú','v','w','x','y','z']
+    maiusculas = ['A','À','Á','Ã','Â','B','C','Ç','D','E','É','Ê','F','G','H','I','Í','J','K','L','M',
+                  'N','O','Ó','Ô','Õ','P','Q','R','S','T','U','Ú','V','W','X','Y','Z']
 
-def eh_palindroma(palavra):
-    '''
-    :param palavra: string
-    :return: True, se a palavra for palíndroma e False, caso contrário.
-    '''
-    tamanho = comprimento(palavra)
-    for i in range(0, tamanho-1):
-       if (palavra[i] != palavra[-i-1]):
-           return False
-    return True
+    resultado = ''
+    for letra in frase:
+        if letra in minusculas:
+            indice = minusculas.index(letra)
+            resultado += maiusculas[indice]
+        else:
+            resultado += letra
+    return resultado
 
 def retira_espaco(frase):
     '''
@@ -43,10 +41,32 @@ def retira_espaco(frase):
     final = tamanho - cont_fim
     return frase[cont_ini:final]
 
+def comprimento(iteravel):
+    '''
+    :param iteravel: pode ser string, lista, tupla...
+    :return: tamanho da do iterável (minha versão da função len())
+    '''
+    contador = 0
+    for item in iteravel:
+        contador += 1
+    return contador
+
+def eh_palindroma(palavra):
+    '''
+    :param palavra: string
+    :return: True, se a palavra for palíndroma e False, caso contrário.
+    '''
+    palavra = para_maiuscula(retira_espaco(palavra))
+    tamanho = comprimento(palavra)
+    for i in range(0, tamanho):
+       if (palavra[i] != palavra[-i-1]):
+           return False
+    return True
+
 def quantidade_palavras(texto):
     '''
     :param texto: string
-    :return: quantidade de palavras no texto
+    :return: inteiro, quantidade de palavras no texto
     '''
     texto_liquido = retira_espaco(texto)
     tamanho = comprimento(texto_liquido)
@@ -89,25 +109,6 @@ def formato_aereas(nome_completo):
     ultimo = ultimo_nome(nome)
     formato = ultimo + '/' + primeiro
     return formato
-print(formato_aereas('Jailton de souza silva'))
-def para_maiuscula(frase):
-    '''
-    :param frase: String
-    :return: String, a frase em maiúsculas
-    '''
-    minusculas = ['a','à','á','ã','â','b','c','ç','d','e','é','ê','f','g','h','i','í','j','k','l','m',
-                  'n','o','ó','ô','õ','p','q','r','s','t','u','ú','v','w','x','y','z']
-    maiusculas = ['A','À','Á','Ã','Â','B','C','Ç','D','E','É','Ê','F','G','H','I','Í','J','K','L','M',
-                  'N','O','Ó','Ô','Õ','P','Q','R','S','T','U','Ú','V','W','X','Y','Z']
-
-    resultado = ''
-    for letra in frase:
-        if letra in minusculas:
-            indice = minusculas.index(letra)
-            resultado += maiusculas[indice]
-        else:
-            resultado += letra
-    return resultado
 
 def formato_referencia(nome_completo):
     '''

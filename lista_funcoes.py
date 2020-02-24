@@ -1,3 +1,5 @@
+# Neste módulo estão os scripts da revisão sobre funções
+
 def fatorial(n):
     '''
     :param n: inteiro
