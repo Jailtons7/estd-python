@@ -58,4 +58,44 @@ def dia_da_semana(num):
     else:
         return 'Dia inválido'
 
+def hipotenusa(cat1, cat2):
+    '''
+    :param cat1: float
+    :param cat2: float
+    :return: float, hipotenusa usando o teorema de pitágoras
+    '''
+    hipotenusa = (cat1 ** 2 + cat2 ** 2) ** 0.5
+    return hipotenusa
 
+def eh_bissexto(ano):
+    '''
+    :param ano: inteiro
+    :return: Booleano, True se for ano bissexto, False, caso contrário
+    '''
+    if (ano % 4 == 0):
+        if (ano % 100 == 0 and ano % 400 != 0):
+            return False
+        else:
+            return True
+    else:
+        return False
+
+def eh_data_valida(dia, mes, ano):
+    '''
+    :param dia, mes, ano: inteiros
+    :return: booleano; True, se for data válida. False, caso contrário
+    '''
+    bissexto = eh_bissexto(ano)
+    meses_30 = [4, 6, 9, 11]
+    if mes < 1 or mes > 12:
+        return False
+    if dia < 1 or dia > 31:
+        return False
+    elif dia > 29 and mes == 2:
+        return False
+    elif dia == 29 and mes == 2 and not bissexto:
+        return False
+    elif mes in meses_30 and dia > 30:
+        return False
+    else:
+        return True
