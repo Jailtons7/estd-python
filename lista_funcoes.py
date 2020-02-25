@@ -99,3 +99,45 @@ def eh_data_valida(dia, mes, ano):
         return False
     else:
         return True
+
+def soma_numeros(n):
+    '''
+    :param n: inteiro
+    :return: inteiro, soma dos n primeiros números
+    '''
+    count = 0
+    soma = 0
+    while count <= n:
+        soma += count
+        count += 1
+    return soma
+
+def eh_primo(n):
+    divisor = 2
+    while divisor < n:
+        if n % divisor == 0:
+            return False
+        divisor += 1
+    return True
+
+def soma_fibonacci(n):
+    '''
+    :param n: inteiro maior do que zero
+    :return: inteiro, soma dos n primeiros termos da sequência de Fibonacci
+    '''
+    serie = []
+    c = 0
+    while c < n:
+        if c == 0:
+            serie.append(0)
+        elif c == 1:
+            serie.append(1)
+        else:
+            serie.append(serie[c-1]+serie[c-2])
+        c += 1
+
+    soma = 0
+    for valor in serie:
+        soma += valor
+
+    return soma
