@@ -1,5 +1,6 @@
 # Neste módulo estão os scripts da revisão sobre funções
 
+
 def fatorial(n):
     '''
     :param n: inteiro
@@ -12,17 +13,20 @@ def fatorial(n):
     else:
         return n * fatorial(n-1)
 
+
 def eh_par(n):
     if n % 2 == 0:
         return True
     else:
         return False
 
+
 def par_ou_impar(n):
     if n % 2 == 0:
         return 'par'
     else:
         return 'ímpar'
+
 
 def compare(a, b):
     if a > b:
@@ -32,11 +36,13 @@ def compare(a, b):
     else:
         return -1
 
+
 def maior_de_2(num_1, num_2):
     if num_1 > num_2:
         return num_1
     else:
         return num_2
+
 
 def maior_de_3(a,b,c):
     if a >= b:
@@ -49,6 +55,8 @@ def maior_de_3(a,b,c):
             return b
         else:
             return c
+
+
 def dia_da_semana(num):
     numeros = [1,2,3,4,5,6,7]
     dias = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado']
@@ -58,6 +66,7 @@ def dia_da_semana(num):
     else:
         return 'Dia inválido'
 
+
 def hipotenusa(cat1, cat2):
     '''
     :param cat1: float
@@ -66,6 +75,7 @@ def hipotenusa(cat1, cat2):
     '''
     hipotenusa = (cat1 ** 2 + cat2 ** 2) ** 0.5
     return hipotenusa
+
 
 def eh_bissexto(ano):
     '''
@@ -79,6 +89,7 @@ def eh_bissexto(ano):
             return True
     else:
         return False
+
 
 def eh_data_valida(dia, mes, ano):
     '''
@@ -100,6 +111,7 @@ def eh_data_valida(dia, mes, ano):
     else:
         return True
 
+
 def soma_numeros(n):
     '''
     :param n: inteiro
@@ -112,6 +124,7 @@ def soma_numeros(n):
         count += 1
     return soma
 
+
 def eh_primo(n):
     divisor = 2
     while divisor < n:
@@ -119,6 +132,7 @@ def eh_primo(n):
             return False
         divisor += 1
     return True
+
 
 def soma_fibonacci(n):
     '''

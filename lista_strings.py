@@ -1,6 +1,7 @@
 # Neste módulo estão as funções sobre a lista 2 - strings.
 # O desafio é usar o mínimo possível de funções built-in do Python
 
+
 def para_maiuscula(frase):
     '''
     :param frase: String
@@ -19,6 +20,7 @@ def para_maiuscula(frase):
         else:
             resultado += letra
     return resultado
+
 
 def retira_espaco(frase):
     '''
@@ -41,6 +43,7 @@ def retira_espaco(frase):
     final = tamanho - cont_fim
     return frase[cont_ini:final]
 
+
 def comprimento(iteravel):
     '''
     :param iteravel: pode ser string, lista, tupla...
@@ -50,6 +53,7 @@ def comprimento(iteravel):
     for item in iteravel:
         contador += 1
     return contador
+
 
 def eh_palindroma(palavra):
     '''
@@ -62,6 +66,7 @@ def eh_palindroma(palavra):
        if (palavra[i] != palavra[-i-1]):
            return False
     return True
+
 
 def quantidade_palavras(texto):
     '''
@@ -77,6 +82,7 @@ def quantidade_palavras(texto):
             contador += 1
         anterior = texto_liquido[i]
     return contador
+
 
 def ultimo_nome(nome_completo):
     '''
@@ -94,6 +100,7 @@ def ultimo_nome(nome_completo):
     fatiamento = tamanho - contador
     return nome[fatiamento:]
 
+
 def formato_aereas(nome_completo):
     '''
     :param nome_completo: String
@@ -110,6 +117,7 @@ def formato_aereas(nome_completo):
     formato = ultimo + '/' + primeiro
     return formato
 
+
 def formato_referencia(nome_completo):
     '''
     :param nome_completo: String
@@ -122,3 +130,15 @@ def formato_referencia(nome_completo):
         if nome_completo[i] == ' ':
             nome_aux += para_maiuscula(nome_completo[i+1])+'.'
     return '%s,%s' % (ultimo, nome_aux)
+
+
+def gera_login(nome_completo):
+    nome = retira_espaco(nome_completo)
+    anterior = ''
+    usuario = nome[0]
+    for i in range(comprimento(nome)):
+        if nome[i] == ' ' and anterior != ' ':
+            usuario += nome[i+1]
+        anterior = nome[i]
+    return  usuario
+
