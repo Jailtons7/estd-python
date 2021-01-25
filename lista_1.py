@@ -27,3 +27,17 @@ def questao_1():
             break
 
         count += 1
+
+
+def questao_5():
+    lista = []
+    while True:
+        input_ = input().strip().split(' ')
+        if len(input_) != 5:
+            raise ValueError(
+                'O número de dados de entrada deve ser igual a 5'
+            )
+        if input_[0] == 0:
+            break
+        if input_ not in lista:
+            lista.append(input_)
