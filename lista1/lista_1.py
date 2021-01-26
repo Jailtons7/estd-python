@@ -107,7 +107,7 @@ def questao_4():
 def questao_5():
     lista = []
     while True:
-        input_ = input().strip().split(' ')
+        input_ = list(map(int, input().strip().split(' ')))
         if len(input_) != 5:
             raise ValueError(
                 'O número de dados de entrada deve ser igual a 5'
@@ -116,6 +116,15 @@ def questao_5():
             break
         if input_ not in lista:
             lista.append(input_)
+    tempos = []
+    for entrada in lista:
+        meses_dif = entrada[3] - entrada[1]
+        anos_dif = entrada[4] - entrada[2]
+        meses = meses_dif + anos_dif * 12
+        tempos.append(meses)
+
+    index_ = tempos.index(max(tempos))
+    print(lista[index_][0])
 
 
 def questao_6():
@@ -139,4 +148,4 @@ def questao_10():
 
 
 if __name__ == '__main__':
-    questao_3()
+    questao_5()
