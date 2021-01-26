@@ -163,9 +163,6 @@ def questao_6():
     print(f'{media_salarios} {media_filhos} {maior} {percentual}')
 
 
-
-
-
 def questao_7():
     raise NotImplementedError
 
@@ -175,7 +172,32 @@ def questao_8():
 
 
 def questao_9():
-    raise NotImplementedError
+    n = int(input().strip())
+    loop = 0
+    while loop < n:
+        input_ = input().strip()
+        m = len(input_) ** 0.5
+        if m % 1 == 0.0:
+            count = 0
+            palavra = ''
+            lista = []
+            last_loop = 0
+            for i in range(len(input_)):
+                if count < m:
+                    palavra += input_[i]
+                    count += 1
+                    if last_loop == m:
+                        lista.append(palavra)
+                else:
+                    count = 0
+                    lista.append(palavra)
+                    palavra = input_[i]
+                last_loop += 1
+
+            print(' '.join(lista))
+        else:
+            print('invalido')
+        loop += 1
 
 
 def questao_10():
@@ -183,4 +205,4 @@ def questao_10():
 
 
 if __name__ == '__main__':
-    questao_6()
+    questao_9()
