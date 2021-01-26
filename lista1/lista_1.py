@@ -105,7 +105,17 @@ def questao_4():
 
 
 def questao_5():
-    raise NotImplementedError
+    lista = []
+    while True:
+        input_ = input().strip().split(' ')
+        if len(input_) != 5:
+            raise ValueError(
+                'O número de dados de entrada deve ser igual a 5'
+            )
+        if input_[0] == 0:
+            break
+        if input_ not in lista:
+            lista.append(input_)
 
 
 def questao_6():
