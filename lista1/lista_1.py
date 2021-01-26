@@ -109,9 +109,10 @@ def questao_5():
     while True:
         input_ = list(map(int, input().strip().split(' ')))
         if len(input_) != 5:
-            raise ValueError(
+            print(
                 'O número de dados de entrada deve ser igual a 5'
             )
+            continue
         if input_[0] == 0:
             break
         if input_ not in lista:
@@ -128,7 +129,41 @@ def questao_5():
 
 
 def questao_6():
-    raise NotImplementedError
+    valores = []
+    while True:
+        input_ = list(map(int, input().strip().split(' ')))
+        if len(input_) != 2:
+            print(
+                "Só é permito um salário e um número de filhos por entrada"
+            )
+            continue
+        if input_[0] < 0:
+            break
+        valores.append(input_)
+    salarios = [valor[0] for valor in valores]
+    filhos = [valor[1] for valor in valores]
+    count = 0
+    maior = -1.0
+    soma_salario = 0.0
+    for sal in salarios:
+        soma_salario += sal
+        if sal > maior:
+            maior = sal
+        if sal <= 2500.0:
+            count += 1
+
+    soma_filhos = 0
+    for fil in filhos:
+        soma_filhos += fil
+
+    n_salarios = len(salarios)
+    media_salarios = soma_salario / n_salarios
+    media_filhos = soma_filhos / len(filhos)
+    percentual = count / n_salarios
+    print(f'{media_salarios} {media_filhos} {maior} {percentual}')
+
+
+
 
 
 def questao_7():
@@ -148,4 +183,4 @@ def questao_10():
 
 
 if __name__ == '__main__':
-    questao_5()
+    questao_6()
