@@ -21,18 +21,20 @@ def questao_1():
     de mulheres loiras de olhos verdes com idade i tal que 18 <= i <= 35
     """
     maximum = 0
-    count = 1
+    count = 0
     dados = {}
     idades = []
     while maximum < 100:
         try:
-            idade = int(input('Idade: '))
+            idade = int(input('Idade: ').strip())
         except ValueError:
             print('A idade deve ser um número')
             return None
+        if idade == -1:
+            break
 
-        dados_entrada = input('Sexo, olhos e cabelo (Separados por espaço)').strip().split(' ')
-        if len(dados_entrada) == 1 and dados_entrada[0] == '-1':
+        dados_entrada = input('Sexo, cabelo e olhos (Separados por espaço)').strip().split(' ')
+        if len(dados_entrada) == 1:
             break
         elif len(dados_entrada) == 3:
             idades.append(idade)
@@ -44,9 +46,15 @@ def questao_1():
         maximum += 1
         count += 1
 
+    tot = 0
     for key, value in dados.items():
-        pass
-    return max(idades)
+        if 18 <= idades[key] <= 35 and value[0] == 'f' and value[1] == 'l' and value[2] == 'v':
+            tot += 1
+
+    percentual = tot / len(dados) * 100
+    maior_idade = max(idades)
+    print(f"mais velho: {maior_idade}")
+    print(f"Mulheres com olhos verdes, loiras com 18 a 35 anos: {percentual}%")
 
 
 def questao_2():
@@ -168,36 +176,56 @@ def questao_7():
 
 
 def questao_8():
-    raise NotImplementedError
+    """
+    Determina a quantidade mínima de notas para se chegar a uma
+    determinada quantia (notas disponíveis: 100, 50, 10, 5, 1)
+    """
+    notas = [100, 50, 10, 5, 1]
+    quantia = int(input().strip())
+    dict_notas = {}
+    for nota in notas:
+        if quantia // nota != 0:
+            dict_notas[nota] = quantia // nota
+            quantia = quantia % nota
+
+    saidas = [f'{value} nota(s) de R$ {key}' for key, value in dict_notas.items() if value]
+    for saida in saidas:
+        print(saida)
 
 
 def questao_9():
     n = int(input().strip())
     loop = 0
+    lista = []
+    matriz = []
+    lista_interna = []
     while loop < n:
         input_ = input().strip()
         m = len(input_) ** 0.5
         if m % 1 == 0.0:
             count = 0
-            palavra = ''
-            lista = []
-            last_loop = 0
+            last_loop = 1
             for i in range(len(input_)):
                 if count < m:
-                    palavra += input_[i]
+                    lista_interna.append(input_[i])
                     count += 1
-                    if last_loop == m:
-                        lista.append(palavra)
+                    if last_loop % m == 0:
+                        matriz.append(lista_interna)
+                        lista_interna = list()
+                        count = 0
                 else:
                     count = 0
-                    lista.append(palavra)
-                    palavra = input_[i]
+                    matriz.append(lista_interna)
+                    lista_interna = list()
+                    lista_interna.append(input_[i])
                 last_loop += 1
+            lista_interna = list()
 
-            print(' '.join(lista))
         else:
-            print('invalido')
+            matriz.append(lista_interna.append('Inválido'))
+        lista.append(matriz)
         loop += 1
+    print(matriz)
 
 
 def questao_10():
@@ -205,4 +233,4 @@ def questao_10():
 
 
 if __name__ == '__main__':
-    questao_9()
+    questao_1()
