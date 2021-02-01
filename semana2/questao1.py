@@ -77,15 +77,16 @@ if __name__ == '__main__':
                 cliente = Cliente(nome, cpf, rua, cep, cidade)
                 cod_prod = list(map(int, input('identificadores dos produtos: ').split()))
                 produtos_compra = []
-                for prod in produtos:
-                    if prod.id in cod_prod:
-                        num_prod = int(input(f'quantidade de produtos {prod.id}: '))
-                        produtos_compra.append(
-                            {
-                                'produto': prod,
-                                'quantidade': num_prod
-                            }
-                        )
+                for id in cod_prod:
+                    for item in produtos:
+                        if id == item.id:
+                            num_prod = int(input(f'quantidade de produtos {id}: '))
+                            produtos_compra.append(
+                                {
+                                    'produto': item,
+                                    'quantidade': num_prod
+                                }
+                            )
 
                 c = Compra(data, cliente, produtos_compra)
                 compras.append(c)
