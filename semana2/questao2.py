@@ -41,6 +41,7 @@ if __name__ == '__main__':
             autores.append(Autor(nome, endereco, cpf, num_obras, descr_pessoal))
             print('Autor inserido no sistema!')
         elif opcao == 2:
+            print('listando os autores: ')
             for autor in autores:
                 print(autor.nome)
         elif opcao == 3:
@@ -65,6 +66,7 @@ if __name__ == '__main__':
                 if autor.cpf == cpf_input:
                     cpfs2.append(autor.cpf)
                     autores.remove(autor)
+                    print(f'Autor {autor.nome} deletado com sucesso.')
             if cpf_input not in cpfs2:
                 print('Não há autor com o CPF informado')
         elif opcao == 5:
@@ -73,3 +75,5 @@ if __name__ == '__main__':
             titulo = input('Nome: ')
             ano = input('Nome: ')
             autores = input('Nome: ')
+        else:
+            break
